@@ -10,6 +10,7 @@ from datetime import datetime
 
 from defense.LocalGaussianBlurringDefense import LocalGaussianBlurringDefense, LocalGaussianBlurringDefensePolicy
 from defense.MultiAugmentationDefense import MultiAugmentation, MultiAugmentationPolicy
+from defense.BitplaneSlicingDefense import BitplaneSlicingDefense, BitplaneSlicingDefensePolicy
 
 from train_methods.PPOTrainer import PPOTrainer
 from train_methods.DQNTrainer import DQNTrainer
@@ -72,8 +73,8 @@ def main(conf):
 
     
     # Env, Agent setting
-    env = Env(conf, MultiAugmentation)
-    agent = PPO(conf, MultiAugmentationPolicy)
+    env = Env(conf, BitplaneSlicingDefense)
+    agent = PPO(conf, BitplaneSlicingDefensePolicy)
     trainer = PPOTrainer(agent, env, conf, manager)
     
     # Train code
